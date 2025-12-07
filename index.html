@@ -1,71 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guyalex Jean — Software Engineer Portfolio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Guyalex Jean — Software Engineer</title>
 
-    <!-- Link external CSS -->
-    <link rel="stylesheet" href="css/styles.css">
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <!-- Three.js + OrbitControls (correct working version) -->
+  <script src="https://unpkg.com/three@0.128.0/build/three.min.js"></script>
+  <script src="https://unpkg.com/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
 </head>
-
 <body>
-    <header class="hero">
-        <h1>Guyalex Jean</h1>
-        <p class="tagline">Software Engineer • Web Developer • Innovator</p>
-        <a href="#projects" class="btn">View My Projects</a>
-    </header>
+  <div class="hero">
+    <div class="hero-text">
+      <p class="hero-tag">Portfolio • Software Engineer</p>
+      <h1>Guyalex Jean</h1>
+      <p class="hero-subtitle">
+        Junior software engineer focused on clean code, real-world projects,
+        and solving problems with modern web technologies.
+      </p>
 
-    <section id="about" class="section">
-        <h2>About Me</h2>
-        <p>
-            I am a software engineer focused on building clean, functional, and modern applications.
-            Currently completing my Software Engineering degree at WGU, I specialize in front-end
-            development, backend basics, Python, JavaScript, and clean UI design principles.
-        </p>
+      <div class="hero-buttons">
+        <a href="#projects" class="btn primary">View Projects</a>
+        <a href="#contact" class="btn ghost">Contact Me</a>
+      </div>
+    </div>
 
-        <p>
-            I enjoy working on real-world projects, improving my technical skills, and creating tools
-            that solve real problems. My goal is to grow into a strong full-stack engineer while 
-            contributing to meaningful products.
-        </p>
-    </section>
+    <div class="hero-globe">
+      <canvas id="globeCanvas"></canvas>
+    </div>
+  </div>
 
+  <main>
     <section id="projects" class="section">
-        <h2>Projects</h2>
-
-        <div class="projects-grid">
-
-            <div class="project-card">
-                <h3>Portfolio Website</h3>
-                <p>A clean and modern personal website built with HTML, CSS, and GitHub + Netlify CI/CD.</p>
-                <a href="#" class="project-link">View Project</a>
-            </div>
-
-            <div class="project-card">
-                <h3>Python Motivation App</h3>
-                <p>A Python CLI program that generates random inspirational messages.</p>
-                <a href="#" class="project-link">View on GitHub</a>
-            </div>
-
-            <div class="project-card">
-                <h3>System Stats Monitor</h3>
-                <p>Script that displays CPU, RAM, and Disk usage—great for WSL and Linux practice.</p>
-                <a href="#" class="project-link">View Project</a>
-            </div>
-
-        </div>
+      <h2>Projects</h2>
+      <p>Coming soon — real-world projects that show how I think and build.</p>
     </section>
 
-    <section id="contact" class="section contact-section">
-        <h2>Contact</h2>
-        <p>If you want to reach out, collaborate, or ask questions—send me an email below.</p>
-
-        <a href="mailto:jeancyberworld@gmail.com" class="contact-btn">✉️ Email Me</a>
+    <section id="contact" class="section">
+      <h2>Contact</h2>
+      <p>
+        Want to connect? Reach me at
+        <a href="mailto:jeancyberworld@gmail.com">jeancyberworld@gmail.com</a>.
+      </p>
     </section>
+  </main>
 
-    <footer class="footer">
-        <p>© 2025 Guyalex Jean • Built with ❤️ using HTML, CSS, Git & Netlify</p>
-    </footer>
+  <!-- Globe logic -->
+  <script src="globe.js"></script>
 </body>
 </html>

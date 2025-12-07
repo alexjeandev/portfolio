@@ -1,128 +1,107 @@
 :root {
-    --bg: #f5f5f5;
-    --text-dark: #222;
-    --text-light: #555;
-    --accent: #0077ff;
-    --radius: 14px;
+  --bg: #050816;
+  --card: #0b1020;
+  --accent: #4f8cff;
+  --accent-soft: rgba(79, 140, 255, 0.18);
+  --text-main: #f9fafb;
+  --text-sub: #9ca3af;
+  --radius: 18px;
+  --shadow-soft: 0 22px 45px rgba(0, 0, 0, 0.55);
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: var(--bg);
-    color: var(--text-dark);
-    line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+    "Segoe UI", sans-serif;
+  background: radial-gradient(circle at top, #0b1220 0, #020617 50%, #000 100%);
+  color: var(--text-main);
+  min-height: 100vh;
 }
 
-/* HERO SECTION */
+/* HERO */
+
 .hero {
-    text-align: center;
-    padding: 80px 20px;
-    background: white;
-    border-radius: var(--radius);
-    box-shadow: 0 4px 18px rgba(0,0,0,0.1);
-    margin: 40px auto;
-    max-width: 900px;
-    animation: fadeIn 1s ease-out;
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 32px;
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.96), rgba(17, 24, 39, 0.98));
+  border-radius: 24px;
+  box-shadow: var(--shadow-soft);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 32px;
+}
+
+.hero-text {
+  flex: 1 1 320px;
+}
+
+.hero-tag {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  margin-bottom: 14px;
 }
 
 .hero h1 {
-    font-size: 48px;
-    margin-bottom: 10px;
+  font-size: 40px;
+  margin-bottom: 10px;
 }
 
-.tagline {
-    font-size: 20px;
-    color: var(--text-light);
-    margin-bottom: 20px;
+.hero-subtitle {
+  margin-bottom: 24px;
+  color: var(--text-sub);
 }
 
-.btn {
-    display: inline-block;
-    padding: 12px 24px;
-    background: var(--accent);
-    color: white;
-    text-decoration: none;
-    border-radius: var(--radius);
-    transition: transform 0.2s ease, background 0.2s ease;
+/* Buttons */
+
+.hero-buttons {
+  display: flex;
+  gap: 12px;
 }
 
-.btn:hover {
-    background: #005fcc;
-    transform: scale(1.05);
+/* Globe Container */
+
+.hero-globe {
+  flex: 0 0 350px;
+  width: 350px;
+  height: 350px;
+  border-radius: 999px;
+  background: radial-gradient(circle at 30% 20%, #4f8cff 0, #020617 60%);
+  position: relative;
+  overflow: hidden;
+  box-shadow:
+    0 0 50px rgba(79, 140, 255, 0.55),
+    0 25px 55px rgba(0, 0, 0, 0.9);
 }
 
-/* SECTIONS */
+/* The canvas fills the container */
+#globeCanvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* MAIN SECTIONS */
+
 .section {
-    max-width: 900px;
-    margin: 60px auto;
-    padding: 20px;
+  max-width: 1100px;
+  margin: 0 auto 40px;
+  padding: 24px;
+  border-radius: 18px;
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid rgba(31, 41, 55, 0.9);
 }
-
-.section h2 {
-    text-align: center;
-    font-size: 32px;
-}
-
-/* PROJECT GRID */
-.projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 24px;
-    margin-top: 30px;
-}
-
-.project-card {
-    background: white;
-    padding: 20px;
-    border-radius: var(--radius);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.project-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
-}
-
-.project-link {
-    color: var(--accent);
-    text-decoration: none;
-    font-weight: bold;
-}
-
-/* CONTACT BUTTON */
-.contact-section {
-    text-align: center;
-}
-
-.contact-btn {
-    display: inline-block;
-    padding: 14px 28px;
-    background: var(--accent);
-    color: white;
-    border-radius: var(--radius);
-    text-decoration: none;
-    font-size: 18px;
-    transition: transform 0.2s ease;
-}
-
-.contact-btn:hover {
-    transform: scale(1.07);
-    background: #005fcc;
-}
-
-/* FOOTER */
-.footer {
-    text-align: center;
-    margin: 60px 0 20px;
-    color: var(--text-light);
-}
-
-/* ANIMATIONS */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to   { opacity: 1; transform: translateY(0); }
-}
-
-/* Globe css*/
