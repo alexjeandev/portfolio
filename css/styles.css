@@ -9,12 +9,14 @@
   --shadow-soft: 0 22px 45px rgba(0, 0, 0, 0.55);
 }
 
+/* Reset */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
+/* Global */
 html,
 body {
   margin: 0;
@@ -24,6 +26,7 @@ body {
   background: radial-gradient(circle at top, #0b1220 0, #020617 50%, #000 100%);
   color: var(--text-main);
   min-height: 100vh;
+  scroll-behavior: smooth; /* smooth scrolling for anchor links */
 }
 
 /* HERO */
@@ -32,7 +35,11 @@ body {
   max-width: 1100px;
   margin: 40px auto;
   padding: 32px;
-  background: linear-gradient(135deg, rgba(15, 23, 42, 0.96), rgba(17, 24, 39, 0.98));
+  background: linear-gradient(
+    135deg,
+    rgba(15, 23, 42, 0.96),
+    rgba(17, 24, 39, 0.98)
+  );
   border-radius: 24px;
   box-shadow: var(--shadow-soft);
   display: flex;
@@ -106,9 +113,13 @@ body {
   border: 1px solid rgba(31, 41, 55, 0.9);
 }
 
-/* --------------------------------------------------------- */
-/*  LINK GLOW STYLE (Added by ChatGPT — safe + clean)        */
-/* --------------------------------------------------------- */
+/* Divider before Contact */
+#contact {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 30px;
+}
+
+/* Global link glow */
 
 a {
   color: #6cb8ff;
@@ -122,48 +133,7 @@ a:hover {
   text-shadow: 0 0 12px rgba(157, 212, 255, 0.85);
 }
 
-
-/* contact style 2*/
-
-.contact-links a {
-  font-size: 16px;
-  color: #6cb8ff;
-  text-shadow: 0 0 8px rgba(108, 184, 255, 0.6);
-  text-decoration: none;
-  transition: 0.25s ease;
-}
-
-.contact-links a:hover {
-  color: #9dd4ff;
-  text-shadow: 0 0 12px rgba(157, 212, 255, 0.85);
-}
-
-
-/* footer style */
-/* FOOTER */
-.footer {
-  text-align: center;
-  padding: 20px;
-  margin-top: 40px;
-  color: var(--text-sub);
-  font-size: 14px;
-  opacity: 0.75;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.footer p {
-  margin: 0;
-  transition: opacity 0.3s ease;
-}
-
-.footer p:hover {
-  opacity: 1;
-  color: var(--accent);
-}
-
-/* -------------------------------- */
-/*      CONTACT LINKS WITH ICONS    */
-/* -------------------------------- */
+/* CONTACT LINKS WITH ICONS */
 
 .contact-links {
   display: flex;
@@ -180,7 +150,7 @@ a:hover {
   align-items: center;
   gap: 10px;
   text-shadow: 0 0 8px rgba(108, 184, 255, 0.6);
-  transition: 
+  transition:
     color 0.2s ease,
     transform 0.15s ease,
     text-shadow 0.2s ease;
@@ -192,6 +162,171 @@ a:hover {
 
 .contact-links a:hover {
   color: #9dd4ff;
-  transform: translateX(4px);
-  text-shadow: 0 0 12px rgba(157, 212, 255, 0.85);
+  transform: translateX(6px);
+  text-shadow: 0 0 14px rgba(157, 212, 255, 0.95);
+}
+
+/* HORIZONTAL PROJECT DECK */
+
+.projects-row {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  padding: 10px 0;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none; /* hides scrollbar in Firefox */
+}
+
+.projects-row::-webkit-scrollbar {
+  display: none; /* hides scrollbar in Chrome/Safari */
+}
+
+.project-card {
+  min-width: 260px;
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid rgba(79, 140, 255, 0.25);
+  border-radius: 18px;
+  padding: 20px;
+  scroll-snap-align: start;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.45);
+  transition: 
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    border-color 0.3s ease;
+}
+
+/* Zoom-in effect */
+.project-card:hover {
+  transform: scale(1.08);
+  box-shadow:
+    0 0 20px rgba(79, 140, 255, 0.45),
+    0 12px 28px rgba(0, 0, 0, 0.7);
+  border-color: rgba(79, 140, 255, 0.55);
+}
+
+.project-card h3 {
+  margin: 0 0 10px;
+  color: var(--accent);
+}
+
+.project-card p {
+  color: var(--text-sub);
+  line-height: 1.4;
+}
+
+
+
+/* FOOTER */
+
+.footer {
+  text-align: center;
+  padding: 20px;
+  margin-top: 50px;
+  color: var(--text-sub);
+  font-size: 14px;
+  opacity: 0.75;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  letter-spacing: 0.4px;
+  transition: opacity 0.3s ease;
+}
+
+.footer p {
+  margin: 0;
+}
+
+.footer:hover {
+  opacity: 1;
+}
+
+/* MOBILE OPTIMIZATIONS */
+
+@media (max-width: 600px) {
+  .section {
+    padding: 18px;
+  }
+
+  .contact-links {
+    gap: 8px;
+  }
+
+  .contact-links a {
+    font-size: 16px;
+  }
+
+  .contact-links a i {
+    font-size: 18px;
+  }
+
+  .hero {
+    padding: 24px;
+  }
+
+  .hero h1 {
+    font-size: 32px;
+  }
+}
+
+
+
+
+/* ----------------------------------------- */
+/*           PROJECT CARD DECK               */
+/* ----------------------------------------- */
+
+.projects-grid {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  padding: 10px 0;
+  position: relative;
+  scroll-behavior: smooth;
+}
+
+/* Track line behind cards */
+.projects-grid::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: rgba(79, 140, 255, 0.15);
+  transform: translateY(-50%);
+  z-index: 0;
+}
+
+.project-card {
+  min-width: 240px;
+  padding: 20px;
+  background: rgba(15, 23, 42, 0.75);
+  border: 1px solid rgba(79, 140, 255, 0.2);
+  border-radius: 18px;
+  box-shadow: 0 0 22px rgba(79, 140, 255, 0.08);
+  backdrop-filter: blur(4px);
+  
+  /* Animations */
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    transform 0.3s ease,
+    opacity 0.6s ease,
+    box-shadow 0.3s ease,
+    scale 0.3s ease;
+  
+  position: relative;
+  z-index: 1;
+}
+
+/* Fade-in when visible */
+.project-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hover zoom + glow */
+.project-card:hover {
+  scale: 1.05;
+  box-shadow:
+    0 0 25px rgba(79, 140, 255, 0.35),
+    0 0 12px rgba(79, 140, 255, 0.2);
 }
