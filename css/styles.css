@@ -121,3 +121,77 @@ a:hover {
   color: #9dd4ff;
   text-shadow: 0 0 12px rgba(157, 212, 255, 0.85);
 }
+
+
+/* contact style 2*/
+
+.contact-links a {
+  font-size: 16px;
+  color: #6cb8ff;
+  text-shadow: 0 0 8px rgba(108, 184, 255, 0.6);
+  text-decoration: none;
+  transition: 0.25s ease;
+}
+
+.contact-links a:hover {
+  color: #9dd4ff;
+  text-shadow: 0 0 12px rgba(157, 212, 255, 0.85);
+}
+
+
+/* footer style */
+/* FOOTER */
+.footer {
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+  color: var(--text-sub);
+  font-size: 14px;
+  opacity: 0.75;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footer p {
+  margin: 0;
+  transition: opacity 0.3s ease;
+}
+
+.footer p:hover {
+  opacity: 1;
+  color: var(--accent);
+}
+
+/* -------------------------------- */
+/*      CONTACT LINKS WITH ICONS    */
+/* -------------------------------- */
+
+.contact-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.contact-links a {
+  color: #6cb8ff;
+  font-size: 18px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-shadow: 0 0 8px rgba(108, 184, 255, 0.6);
+  transition: 
+    color 0.2s ease,
+    transform 0.15s ease,
+    text-shadow 0.2s ease;
+}
+
+.contact-links a i {
+  font-size: 20px;
+}
+
+.contact-links a:hover {
+  color: #9dd4ff;
+  transform: translateX(4px);
+  text-shadow: 0 0 12px rgba(157, 212, 255, 0.85);
+}
