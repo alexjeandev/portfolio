@@ -1,12 +1,11 @@
-// globe.js — Earth + Starfield + Clean Shooting Meteors
-
+// globe.js — Earth + Starfield + Meteors (Fixed paths)
 (function () {
   const canvas = document.getElementById("globeCanvas");
   if (!canvas || !window.THREE) return;
 
   const container = canvas.parentElement;
 
-  // ========== SCENE ==========
+  // ===== Scene =====
   const scene = new THREE.Scene();
 
   const camera = new THREE.PerspectiveCamera(35, 1, 0.1, 100);
@@ -30,14 +29,15 @@
   }
   resizeRenderer();
 
-  // ========== LIGHTING ==========
+  // ===== Lighting =====
   scene.add(new THREE.AmbientLight(0x404040, 1.5));
   const dir = new THREE.DirectionalLight(0xffffff, 1.2);
   dir.position.set(5, 3, 5);
   scene.add(dir);
 
-  // ========== EARTH ==========
-  const texture = new THREE.TextureLoader().load("assets/earth_night.jpg");
+  // ===== Earth =====
+  const texture = new THREE.TextureLoader().load("./assets/earth_night.jpg");
+
   const earth = new THREE.Mesh(
     new THREE.SphereGeometry(1, 64, 64),
     new THREE.MeshPhongMaterial({
@@ -50,13 +50,13 @@
   );
   scene.add(earth);
 
-  // ========== STARFIELD (CLEAN) ==========
+  // ===== Stars =====
   const starsGeo = new THREE.BufferGeometry();
   const starCount = 1500;
   const starPositions = new Float32Array(starCount * 3);
 
   for (let i = 0; i < starCount * 3; i++) {
-    starPositions[i] = (Math.random() - 0.5) * 50; // large cube of stars
+    starPositions[i] = (Math.random() - 0.5) * 50;
   }
 
   starsGeo.setAttribute("position", new THREE.BufferAttribute(starPositions, 3));
@@ -71,7 +71,7 @@
   const starField = new THREE.Points(starsGeo, starsMat);
   scene.add(starField);
 
-  // ========== SHOOTING METEORS (CLEAN STREAK LINES) ==========
+  // ===== Meteors =====
   const meteors = [];
 
   function createMeteor() {
@@ -79,19 +79,16 @@
       color: 0xffddaa,
       transparent: true,
       opacity: 1,
-      linewidth: 2,
     });
 
-    const length = 0.8;
     const geometry = new THREE.BufferGeometry();
     const positions = new Float32Array([
-      0, 0, 0,  // tail
-      length, 0, 0 // head
+      0, 0, 0,
+      0.8, 0, 0
     ]);
     geometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
 
     const meteor = new THREE.Line(geometry, material);
-
     resetMeteor(meteor);
     scene.add(meteor);
     meteors.push(meteor);
@@ -99,38 +96,34 @@
 
   function resetMeteor(meteor) {
     meteor.position.set(
-      -8 + Math.random() * 3,  // x start
-      4 + Math.random() * 2,   // y start
-      -5 + Math.random() * 3   // z start
+      -8 + Math.random() * 3,
+      4 + Math.random() * 2,
+      -5 + Math.random() * 3
     );
 
     meteor.userData.velocity = new THREE.Vector3(
-      0.18 + Math.random() * 0.05, // speed x
-      -0.22 - Math.random() * 0.03, // speed y
-      0.05 + Math.random() * 0.03 // depth
+      0.18 + Math.random() * 0.05,
+      -0.22 - Math.random() * 0.03,
+      0.05 + Math.random() * 0.03
     );
 
     meteor.material.opacity = 1;
   }
 
-  // create 3 elegant meteors
   for (let i = 0; i < 3; i++) createMeteor();
 
   function updateMeteors() {
     meteors.forEach((meteor) => {
       meteor.position.add(meteor.userData.velocity);
-      meteor.material.opacity -= 0.015; // fade out
+      meteor.material.opacity -= 0.015;
 
-      if (
-        meteor.position.y < -5 ||
-        meteor.material.opacity <= 0
-      ) {
+      if (meteor.position.y < -5 || meteor.material.opacity <= 0) {
         resetMeteor(meteor);
       }
     });
   }
 
-  // ========== ORBIT CONTROLS ==========
+  // ===== Orbit Controls =====
   const controls = new THREE.OrbitControls(camera, canvas);
   controls.enableZoom = false;
   controls.enablePan = false;
@@ -139,18 +132,17 @@
   controls.autoRotate = true;
   controls.autoRotateSpeed = 1.3;
 
-  // ========== ANIMATION LOOP ==========
+  // ===== Animate =====
   function animate() {
     requestAnimationFrame(animate);
 
     starField.rotation.y += 0.0004;
     updateMeteors();
-
     controls.update();
+
     renderer.render(scene, camera);
   }
 
   animate();
-
   window.addEventListener("resize", resizeRenderer);
 })();
